@@ -34,6 +34,7 @@ const handleSignin = (db, bcrypt) => (req, res) => {
 					res.status(400).json('Please verify your account')
 				}	
 			})
+		.catch(err => res.status(400).json('Unable to connect to database'))
 	}
 
 module.exports = {
