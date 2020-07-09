@@ -48,7 +48,7 @@ const handleRegister = (req, res, db, bcrypt, smtpTransport) => {
 		})
 		//.catch(err => {
 			//res.status(400).json('Unable to register. Email may already be registered. Ensure you have verified your e-mail before signing in.')
-		})
+		//})
 
 	}
 
