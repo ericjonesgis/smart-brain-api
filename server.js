@@ -21,7 +21,6 @@ const passwordreset = require('./controllers/passwordreset');
     STMP is mail server which is responsible for sending and recieving email.
 */
 const smtpTransport = nodemailer.createTransport({
-    service: "Gmail",
     secure: false,
     port: process.env.PORT,
     auth: {
