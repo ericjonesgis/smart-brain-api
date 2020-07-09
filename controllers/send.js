@@ -65,6 +65,7 @@ const sendVerify = (req, res, db, smtpTransport) => {
 						    subject : "Password Reset",
 						    html : "Hello,<br> Please Click on the link to reset your password.<br><a href="+link+">Click here to verify</a>"
 						}
+						console.log(mailOptions);
 						smtpTransport.sendMail(mailOptions, function(error, response){
 						 if(error){
 						        console.log(error);
