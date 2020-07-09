@@ -23,7 +23,7 @@ const passwordreset = require('./controllers/passwordreset');
 const smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     secure: false,
-    port: 3000,
+    port: process.env.PORT,
     auth: {
         user: "ericjones000000@gmail.com",
         pass: "kiwi5555"
