@@ -46,8 +46,8 @@ const handleRegister = (req, res, db, bcrypt, smtpTransport) => {
 		    .then(trx.commit)
 			.catch(trx.rollback)
 		})
-		.catch(err => {
-			res.status(400).json('Unable to register. Email may already be registered. Ensure you have verified your e-mail before signing in.')
+		//.catch(err => {
+			//res.status(400).json('Unable to register. Email may already be registered. Ensure you have verified your e-mail before signing in.')
 		})
 
 	}
