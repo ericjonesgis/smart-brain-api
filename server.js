@@ -45,7 +45,6 @@ const db = knex ({
   connection: {
   	connectionstring: process.env.DATABASE_URL,
   	ssl: true 
-  	process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
   }
 });
 
