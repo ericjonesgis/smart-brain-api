@@ -66,6 +66,7 @@ app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcry
 app.get('/profile/:id', (req, res) => { profile.handleProfile(req, res, db) })
 app.put('/image', (req, res) => { image.handleImage(req, res, db) })
 app.post('/imageurl', (req, res) => { image.handleApiCall(req, res, db) })
+app.post('/submit', (req, res) => { image.submit(req, res, db) })
 app.post('/passwordverify', (req, res) => { send.passwordVerify(req, res, db, bcrypt) })
 app.post('/send', (req, res) => { send.sendVerify(req, res, db, smtpTransport) })
 app.get('/verify', (req, res) => { verify.recieveVerify(req, res, db) })

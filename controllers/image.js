@@ -15,15 +15,21 @@ const handleApiCall = (req, res, db) => {
 }
 
 const handleImage = (req, res, db) => {
-	const { id, input, email } = req.body;
+	const { id } = req.body;
 	db('users').where('id', '=', id)
 	.increment('entries', 1)
 	.returning('entries')
 	.then(entries => {
 		res.json(entries[0]);	
 	})
-	.then(insert => {
-		db.transaction(trx => {
+	.catch(err => res.status(400).json('unable to get entries'));
+}
+
+const submit = (req, res, db) => {
+	const {input, email} = req.body;
+	console.log(email);
+	console.log(input);
+	db.transaction(trx => {
 			trx.insert({
 				imageurl: input,
 				email: email
@@ -32,11 +38,10 @@ const handleImage = (req, res, db) => {
 		    .then(trx.commit)
 			.catch(trx.rollback)
 		})
-	})
-	.catch(err => res.status(400).json('unable to get entries'));
 }
 
 module.exports = {
 	handleImage,
-	handleApiCall
+	handleApiCall,
+	submit
 }
