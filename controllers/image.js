@@ -23,7 +23,8 @@ const handleImage = (req, res, db) => {
 		res.json(entries[0]);	
 	})
 	.then(insert => {
-			db.insert({
+		db.transaction(trx => {
+			trx.insert({
 				imageurl: input,
 				email: email
 			})
