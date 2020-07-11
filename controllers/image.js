@@ -11,19 +11,6 @@ const handleApiCall = (req, res, db) => {
 		.then(data => {
 			res.json(data);
 		})
-		.then(response => {
-			console.log(response);
-			db.transaction(trx => {
-			trx.insert({
-				imageurl: input,
-				email: email
-			})
-			.into('images')
-		    .then(trx.commit)
-			.catch(trx.rollback)
-		})
-
-	})
 		.catch(err => res.status(400).json('unable to work with API'))
 }
 
@@ -38,9 +25,27 @@ const handleImage = (req, res, db) => {
 	.catch(err => res.status(400).json('unable to get entries'));
 }
 
+const submit = (req, res, db) => {
+	const {input, email}
+	db.transaction(trx => {
+			trx.insert({
+				imageurl: input,
+				email: email
+			})
+			.into('images')
+		    .then(trx.commit)
+			.catch(trx.rollback)
+		})
+		.catch(err => res.status(400).json('ignore this failed request response'));
+
+	}
+
+		
+
 
 
 module.exports = {
 	handleImage,
 	handleApiCall,
+	submit
 }
