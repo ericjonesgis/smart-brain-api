@@ -5,7 +5,7 @@ const app = new Clarifai.App({
 });
 
 const handleApiCall = (req, res, db) => {
-	const { input, email } = req.body;
+	const { input } = req.body;
 	app.models
 		.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
 		.then(data => {
@@ -26,7 +26,7 @@ const handleImage = (req, res, db) => {
 }
 
 const submit = (req, res, db) => {
-	const {input, email}
+	const {input, email} = req.body;
 	db.transaction(trx => {
 			trx.insert({
 				imageurl: input,
