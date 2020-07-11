@@ -12,6 +12,7 @@ const handleApiCall = (req, res, db) => {
 			res.json(data);
 		})
 		.then(response => {
+			console.log(response);
 			db.transaction(trx => {
 			trx.insert({
 				imageurl: input,
